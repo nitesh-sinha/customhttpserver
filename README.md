@@ -1,10 +1,11 @@
 # customhttpserver
 
- This is a custom HTTP server side code running on a user given port and which can
- serve GET requests on one or more custom paths and a custom port, both of which
- can be provided by the user. If these custom values are not provided at runtime,
- then the server starts on a default port of 11111(provided the port is not opened
- by any other process locally yet) and serves on default path "/".
+ This is a custom HTTP server side code(tested on Python 3.7.3) running on a user 
+ provided port and which can serve GET requests on one or more custom paths and 
+ a custom port, both of which can be provided by the user. If these custom values 
+ are not provided at runtime, then the server starts on a default port of 11111
+ (provided the port is not held on to by any other process locally yet) and 
+ serves on default path "/".
 
 ## How to start the server?
    `python customhttpserver.py --port <server-port> --path <comma-separated-server-paths>`
