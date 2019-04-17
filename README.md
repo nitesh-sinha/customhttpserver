@@ -7,10 +7,10 @@
  by any other process locally yet) and serves on default path "/".
 
 ## How to start the server?
-   python customhttpserver.py --port <server-port> --path <comma-separated-server-paths>
+   `python customhttpserver.py --port <server-port> --path <comma-separated-server-paths>`
 
    Example:
-   python customhttpserver.py --port 12345 --path "/foo,/bar"
+   `python customhttpserver.py --port 12345 --path "/foo,/bar"`
 
    The above example command starts the custom HTTP server on port 12345(assuming no other process is hanging on to that port) and is ready to serve GET requests for paths `/foo` and `/bar`.
 
