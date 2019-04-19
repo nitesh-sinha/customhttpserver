@@ -17,7 +17,7 @@ from optparse import OptionParser
 import socket
 
 
-def run(serving_path):
+def get_handler(serving_path):
     # This is the factory class implementation returning the appropriate custom handler based on user input
     class MyCustomHandler(BaseHTTPRequestHandler):
         def __init__(self, *args, **kwargs):
@@ -58,7 +58,7 @@ if __name__ == "__main__":
                       default="/", help="One or more(comma-separated) path-prefixes served by the server")
     (options, args) = parser.parse_args()
     server_address = ('', int(options.port))
-    custom_handler = run(options.path)
+    custom_handler = get_handler(options.path)
     server = HTTPServer(server_address, custom_handler)
     print("Starting http server on port " + options.port + " and for paths " + options.path)
     server.serve_forever()
