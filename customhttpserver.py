@@ -8,7 +8,7 @@
 # python customhttpserver.py --port <server-port> --path <comma-separated-server-paths>
 #
 # Example:
-# python customhttpserver.py --port 12345 --path "/foo,/bar"
+# python customhttpserver.py --port 12345 --path /foo,/bar
 #
 
 from http.server import BaseHTTPRequestHandler, HTTPServer
@@ -22,6 +22,9 @@ def get_handler(serving_path):
     class MyCustomHandler(BaseHTTPRequestHandler):
         def __init__(self, *args, **kwargs):
             self.serving_paths = {}
+            # Create a dict with keys as serving path-prefixes
+            for path in serving_path.split(','):
+                self.serving_paths[path.strip()] = True
             # BaseHTTPRequestHandler init calls do_GET().
             # So set attributes needed by do_GET before calling the super's __init__
             super(MyCustomHandler, self).__init__(*args, **kwargs)
@@ -31,9 +34,6 @@ def get_handler(serving_path):
             self.end_headers()
 
         def do_GET(self):
-            # Create a dict with keys as serving path-prefixes
-            for path in serving_path.split(','):
-                self.serving_paths[path.strip()] = True
             if self.path in self.serving_paths or self.path.rstrip("/") in self.serving_paths:
                 # Set the response code to be sent in the HTTP response
                 self.send_response(200)
