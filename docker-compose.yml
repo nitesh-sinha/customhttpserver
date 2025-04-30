@@ -3,9 +3,9 @@ version: '3'
 services: 
   myweb:
       build: .
-      image: niteshks/swarm-python-custom-server-app:1.0
+      image: niteshks/swarm-python-custom-server-app:3.0
       ports:
-        - 80:12345
+        - 80:23456
       networks:
         - mynetwork
 
